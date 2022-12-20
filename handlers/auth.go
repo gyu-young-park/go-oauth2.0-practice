@@ -20,6 +20,7 @@ func oauthGoogleLoginHandler(w http.ResponseWriter, r *http.Request) {
 func oauthGoogleCallbackHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("oauthGoogleCallbackHandler start")
 	oauthState, _ := r.Cookie("oauthstate")
+	fmt.Println("oauthstate: ", oauthState)
 
 	if r.FormValue("state") != oauthState.Value {
 		log.Println("Invalid oauth google state")
