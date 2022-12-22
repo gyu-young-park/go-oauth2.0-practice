@@ -3,6 +3,7 @@ package handlers
 import (
 	"crypto/rand"
 	"encoding/base64"
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"time"
@@ -18,4 +19,9 @@ func createStateOauthCookie(w http.ResponseWriter) string {
 	http.SetCookie(w, &cookie)
 	fmt.Println("create oauthstate: ", state)
 	return state
+}
+
+func prettyPrint(i interface{}) string {
+	s, _ := json.MarshalIndent(i, "", "\t")
+	return string(s)
 }
